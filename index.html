@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Janani Kalimuthu | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* Utility Classes */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            position: relative;
+            color: #2c3e50;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 70px;
+            height: 4px;
+            background-color: #3498db;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        
+        .logo span {
+            color: #3498db;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #3498db;
+        }
+        
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 10rem 0 5rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            text-align: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        .hero-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #3498db;
+            font-weight: 400;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: #555;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background-color: #3498db;
+            color: white;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 5rem 0;
+            background-color: #fff;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        .about-text p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+        
+        .about-image {
+            text-align: center;
+        }
+        
+        .profile-img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #f1f1f1;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Education Section */
+        .education {
+            padding: 5rem 0;
+            background-color: #f5f7fa;
+        }
+        
+        .education-item {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            transition: transform 0.3s;
+        }
+        
+        .education-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .education-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+        
+        .education-item .institution {
+            color: #3498db;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .education-item .duration {
+            color: #777;
+            font-style: italic;
+        }
+        
+        /* Skills Section */
+        .skills {
+            padding: 5rem 0;
+            background-color: #fff;
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-item {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .skill-item:hover {
+            background-color: #eef5ff;
+            transform: translateY(-5px);
+        }
+        
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #3498db;
+        }
+        
+        .skill-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+            background-color: #f5f7fa;
+            text-align: center;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-link {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+        
+        .contact-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #3498db;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+            
+            .nav-links {
+                margin-top: 1.5rem;
+                flex-direction: column;
+                text-align: center;
+                display: none;
+                width: 100%;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+            
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                top: 1.5rem;
+                right: 1.5rem;
+            }
+            
+            .hero {
+                padding: 8rem 0 4rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-link {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">Janani<span>.</span></div>
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Janani Kalimuthu</h1>
+                <h2>BSc Computer Science Student</h2>
+                <p>Passionate computer science student at PSGR Krishnammal College for Women, with a keen interest in web development, programming, and emerging technologies. Eager to apply academic knowledge to real-world challenges.</p>
+                <a href="#contact" class="btn">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Hello! I'm Janani Kalimuthu</h3>
+                    <p>I'm currently pursuing a Bachelor of Science in Computer Science at PSGR Krishnammal College for Women. My academic journey has equipped me with a strong foundation in programming, software development, and computer science fundamentals.</p>
+                    <p>I'm passionate about creating digital solutions that solve real-world problems. My coursework has exposed me to various programming languages, algorithms, and data structures, which I continuously strive to master.</p>
+                    <p>Beyond academics, I enjoy exploring new technologies, participating in coding challenges, and collaborating on projects that enhance my problem-solving skills. I believe in continuous learning and staying updated with the latest trends in technology.</p>
+                    <a href="https://www.linkedin.com/in/janani-kalimuthu-b17250306/" target="_blank" class="btn" style="margin-top: 1rem;">
+                        <i class="fab fa-linkedin"></i> Connect on LinkedIn
+                    </a>
+                </div>
+                <div class="about-image">
+                    <div class="profile-img" style="
+                        background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: white;
+                        font-size: 4rem;
+                        font-weight: bold;
+                        margin: 0 auto;
+                    ">
+                        JK
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education" id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-item">
+                <h3>Bachelor of Science in Computer Science</h3>
+                <span class="institution">PSGR Krishnammal College for Women, Coimbatore</span>
+                <span class="duration">2022 - 2025 (Expected)</span>
+                <p style="margin-top: 1rem;">Currently pursuing my undergraduate degree with a focus on programming fundamentals, software engineering, database management, web technologies, and computer networks. Actively participating in academic projects and extracurricular activities related to technology.</p>
+            </div>
+            <div class="education-item">
+                <h3>Higher Secondary Education</h3>
+                <span class="institution">Computer Science with Mathematics</span>
+                <span class="duration">2020 - 2022</span>
+                <p style="margin-top: 1rem;">Completed higher secondary education with a focus on computer science and mathematics, which laid the foundation for my interest in programming and technology.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Interests</h2>
+            <div class="skills-container">
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Programming</h3>
+                    <p>Proficient in C, C++, Java, and Python with hands-on experience through academic projects and problem-solving.</p>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Knowledge of HTML, CSS, JavaScript, and responsive web design principles. Currently expanding skills in front-end frameworks.</p>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Database Management</h3>
+                    <p>Understanding of database concepts, SQL, and data modeling through coursework and practical assignments.</p>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Problem Solving</h3>
+                    <p>Strong analytical and logical thinking skills developed through programming challenges and algorithm design.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center;">Get In Touch</h2>
+            <p style="max-width: 700px; margin: 0 auto 2rem; font-size: 1.1rem;">I'm always open to discussing technology, collaboration opportunities, or just having a friendly chat about the latest trends in computer science!</p>
+            <div class="contact-links">
+                <a href="https://www.linkedin.com/in/janani-kalimuthu-b17250306/" target="_blank" class="contact-link">
+                    <div class="contact-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <div>
+                        <h3>LinkedIn</h3>
+                        <p>Connect professionally</p>
+                    </div>
+                </a>
+                <!-- SIMPLIFIED EMAIL LINK - Just basic mailto without subject/body -->
+                <a href="mailto:Jananikalimuthu511@gmail.com" class="contact-link" id="emailLink">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h3>Email</h3>
+                        <p>Jananikalimuthu511@gmail.com</p>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 5px;">(Click to open your email client)</p>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Alternative Email Option - Direct Gmail Link -->
+            <div style="margin-top: 2rem; padding: 1rem; background-color: white; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); max-width: 500px; margin-left: auto; margin-right: auto;">
+                <h3 style="color: #2c3e50; margin-bottom: 0.5rem;">Alternative: Open Gmail directly</h3>
+                <p style="color: #555; margin-bottom: 1rem;">If the email link above doesn't work, click below to open Gmail in your browser:</p>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=Jananikalimuthu511@gmail.com&su=Portfolio%20Inquiry&body=Hello%20Janani,%0D%0A%0D%0AI%20came%20across%20your%20portfolio%20website%20and%20wanted%20to%20connect..." 
+                   target="_blank" class="btn" style="background-color: #EA4335;">
+                    <i class="fab fa-google"></i> Open Gmail
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Janani Kalimuthu. All rights reserved.</p>
+            <p style="margin-top: 0.5rem; color: #ccc;">BSc Computer Science | PSGR Krishnammal College for Women</p>
+            <div style="margin-top: 1rem;">
+                <a href="https://www.linkedin.com/in/janani-kalimuthu-b17250306/" target="_blank" style="color: #3498db; margin-right: 1rem;">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="mailto:Jananikalimuthu511@gmail.com" style="color: #3498db;">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: #aaa;">
+                Email: Jananikalimuthu511@gmail.com
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu Toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Close menu when clicking on a link
+            const navItems = document.querySelectorAll('.nav-links a');
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    navLinks.classList.remove('active');
+                });
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Enhanced email link functionality with fallback
+            const emailLink = document.getElementById('emailLink');
+            if(emailLink) {
+                emailLink.addEventListener('click', function(e) {
+                    console.log('Email link clicked - opening mail client');
+                    
+                    // Try to open mailto link
+                    setTimeout(function() {
+                        // If user is still on page after 2 seconds, show instructions
+                        if(document.hasFocus()) {
+                            alert("If your email client didn't open automatically:\n\n1. Copy my email: Jananikalimuthu511@gmail.com\n2. Open your email app manually\n3. Paste my email in the 'To' field");
+                        }
+                    }, 2000);
+                });
+            }
+            
+            // Copy email to clipboard functionality
+            const copyEmailBtn = document.createElement('button');
+            copyEmailBtn.innerHTML = '<i class="far fa-copy"></i> Copy Email';
+            copyEmailBtn.style.cssText = 'background: #2c3e50; color: white; border: none; padding: 8px 15px; border-radius: 4px; margin-top: 10px; cursor: pointer; font-size: 0.9rem;';
+            copyEmailBtn.addEventListener('click', function() {
+                navigator.clipboard.writeText('Jananikalimuthu511@gmail.com').then(function() {
+                    const originalText = copyEmailBtn.innerHTML;
+                    copyEmailBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                    copyEmailBtn.style.background = '#27ae60';
+                    setTimeout(function() {
+                        copyEmailBtn.innerHTML = originalText;
+                        copyEmailBtn.style.background = '#2c3e50';
+                    }, 2000);
+                });
+            });
+            
+            // Add copy button to footer
+            const footerContainer = document.querySelector('footer .container');
+            if(footerContainer) {
+                footerContainer.appendChild(copyEmailBtn);
+            }
+        });
+    </script>
+</body>
+</html>
